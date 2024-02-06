@@ -1,0 +1,1 @@
+Resizable：TextView、Squre、Circle
