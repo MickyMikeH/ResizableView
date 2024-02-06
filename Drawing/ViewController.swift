@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Drawing
 //
-//  Created by 金融研發一部-謝宜軒 on 2024/1/26.
+//  Created by MickyMikeH on 2024/1/26.
 //
 
 import UIKit
@@ -33,7 +33,11 @@ class ViewController: UIViewController {
         button3.setTitle("圓形", for: .normal)
         button3.addTarget(self, action: #selector(circleHandler(_:)), for: .touchUpInside)
         
-        let stackView = UIStackView(arrangedSubviews: [button1, button2, button3])
+        let screenShotButton = UIButton(type: .system)
+        screenShotButton.setTitle("ScreenShot", for: .normal)
+        screenShotButton.addTarget(self, action: #selector(screenShotHandler(_:)), for: .touchUpInside)
+        
+        let stackView = UIStackView(arrangedSubviews: [button1, button2, button3, screenShotButton])
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
@@ -66,6 +70,18 @@ class ViewController: UIViewController {
         let circle = ResizableCircleView(layerColor: .white)
         view.addSubview(circle)
         circle.adjustPositionIfNeeded()
+    }
+    
+    @objc func screenShotHandler(_ sender: UIButton) {
+        if let image = MNSreenShotUtility.takeScreenShot(view: self.view) {
+            let demo = ScreenShotDemoViewController()
+            demo.image = image
+            present(demo, animated: true)
+        }
+        else {
+            // 截圖失敗
+            print("Failed to take screenshot.")
+        }
     }
 }
 

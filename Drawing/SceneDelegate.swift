@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  Drawing
 //
-//  Created by 金融研發一部-謝宜軒 on 2024/1/26.
+//  Created by MickyMikeH on 2024/1/26.
 //
 
 import UIKit
